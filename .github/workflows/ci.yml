@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test and build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Library unit tests
+        run: node test/run.js
+
+      - name: Build the single-file bundle
+        run: node build.mjs
+
+      - name: Verify the committed bundle is up to date
+        run: |
+          if ! git diff --quiet -- dist/; then
+            echo "::error::dist/shashka.html is stale. Run 'npm run build' and commit the result."
+            git diff --stat -- dist/
+            exit 1
+          fi
+
+      - name: Browser smoke test (source)
+        run: node test/smoke.mjs
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+
+      - name: Browser smoke test (bundle)
+        run: node test/smoke.mjs --dist
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+
+      - name: Confirm the bundle makes no network requests
+        run: |
+          if grep -nE '\bfetch\s*\(|\bXMLHttpRequest\b|new WebSocket|sendBeacon|new EventSource|importScripts' dist/shashka.html; then
+            echo "::error::The bundle references a network API. Shashka must work fully offline."
+            exit 1
+          fi
+          if grep -nE '\bsrc="https?://' dist/shashka.html; then
+            echo "::error::The bundle loads a remote asset. Everything must be inlined."
+            exit 1
+          fi
+          echo "No network APIs and no remote assets — the offline guarantee holds."

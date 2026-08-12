@@ -1,0 +1,20 @@
+# Test and build scratch files
+.smoke.html
+.smoke-dump.html
+.probe*.html
+_site/
+
+# Dependencies (there are none, but people add them)
+node_modules/
+package-lock.json
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

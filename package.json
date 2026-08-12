@@ -1,0 +1,41 @@
+{
+  "name": "offline-devtools",
+  "version": "1.0.0",
+  "description": "23 developer tools in a single HTML file. Works offline, no install, no tracking, nothing leaves your browser.",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://nasafuriy.github.io/offline-devtools/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nasafuriy/offline-devtools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nasafuriy/offline-devtools/issues"
+  },
+  "scripts": {
+    "test": "node test/run.js",
+    "build": "node build.mjs",
+    "check": "node test/run.js && node build.mjs",
+    "dev": "node serve.mjs"
+  },
+  "keywords": [
+    "developer-tools",
+    "offline",
+    "single-file",
+    "privacy",
+    "json-formatter",
+    "jwt-decoder",
+    "qr-code",
+    "regex-tester",
+    "no-dependencies"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.html",
+    "src",
+    "dist",
+    "build.mjs"
+  ]
+}
