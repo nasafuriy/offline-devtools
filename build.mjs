@@ -29,8 +29,14 @@ const html = await read('index.html');
 const cssFiles = [];
 const jsFiles = [];
 
+// The PWA wiring (manifest, touch icon, service worker) only means anything
+// for the hosted copy, which has sibling files. A standalone download has
+// none, so drop those blocks rather than ship dead references.
+// The opening marker may carry a trailing note, so match up to the closing one.
+let inlined = html.replace(/[ \t]*<!--\s*pwa:start[\s\S]*?<!--\s*pwa:end\s*-->\s*\n?/gi, '');
+
 // Collect every local asset the dev page references, in document order.
-let inlined = html
+inlined = inlined
   .replace(/[ \t]*<link\b[^>]*\bhref="([^"]+\.css)"[^>]*>\s*\n?/gi, (whole, href) => {
     if (/^https?:/i.test(href)) return whole;
     cssFiles.push(href);

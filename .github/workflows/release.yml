@@ -1,0 +1,71 @@
+name: Release
+
+# Pushing a tag like v1.0.0 publishes a GitHub Release with the single-file
+# build attached, so people can download one file without cloning anything.
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Test before publishing anything
+        run: node test/run.js
+
+      - name: Build the single-file bundle
+        run: node build.mjs
+
+      - name: Browser smoke test
+        run: node test/smoke.mjs --dist
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          SIZE=$(du -h dist/shashka.html | cut -f1)
+          cat > notes.md <<EOF
+          ## Shashka $TAG
+
+          **[shashka.html](https://github.com/${{ github.repository }}/releases/download/$TAG/shashka.html)** — $SIZE, one file, no install.
+
+          Download it and open it in any browser. It works with no network
+          connection, stores nothing outside your own browser, and keeps working
+          from a USB stick years from now.
+
+          You can also [use it online](https://nasafuriy.github.io/offline-devtools/)
+          or install it as an app from that page.
+
+          ### What is inside
+
+          23 tools: JSON formatting and type generation, CSV, Base64, URL, escaping,
+          number bases, hashes and HMAC, JWT, ID generation, passwords, timestamps,
+          cron, regex, case conversion, text surgery, diff, Markdown, fake data,
+          colour, QR codes, image conversion, and an HTTP reference.
+
+          Interface in English, Oʻzbekcha and Русский.
+
+          Every release is built and tested by CI: unit tests against published
+          vectors, plus a browser run that mounts all 23 tools and checks that the
+          bundle makes no network requests.
+          EOF
+
+          gh release create "$TAG" \
+            dist/shashka.html \
+            --title "Shashka $TAG" \
+            --notes-file notes.md

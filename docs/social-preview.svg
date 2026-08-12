@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="Shashka: 23 developer tools in a single HTML file">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#111a2e"/>
+      <stop offset="55%"  stop-color="#0b0f17"/>
+      <stop offset="100%" stop-color="#080c14"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#4f8cff"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#4f8cff" stop-opacity=".9"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#4f8cff" stop-opacity=".28"/>
+      <stop offset="100%" stop-color="#4f8cff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <circle cx="1030" cy="300" r="360" fill="url(#halo)"/>
+
+  <!-- brand mark -->
+  <g transform="translate(96,84)">
+    <rect width="96" height="96" rx="24" fill="url(#mark)"/>
+    <g stroke="#ffffff" stroke-width="5.6" stroke-linecap="round" fill="none" opacity=".97">
+      <path d="M33 64 L43.5 32.3"/>
+      <path d="M52.5 64 L63 32.3"/>
+      <path d="M29.6 48 H66.4"/>
+    </g>
+  </g>
+  <text x="216" y="150" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="46" font-weight="700" fill="#e7ecf5" letter-spacing="-0.5">Shashka</text>
+
+  <!-- headline -->
+  <text x="96" y="286" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="82" font-weight="800" fill="#ffffff" letter-spacing="-2.4">23 developer tools.</text>
+  <text x="96" y="374" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="82" font-weight="800" fill="#7fb2ff" letter-spacing="-2.4">One HTML file.</text>
+
+  <rect x="96" y="412" width="360" height="4" rx="2" fill="url(#rule)"/>
+
+  <text x="96" y="470" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="34" font-weight="400" fill="#98a3ba">No install. No tracking. Nothing ever leaves your browser.</text>
+
+  <!-- tool chips -->
+  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600">
+    <g transform="translate(96,520)">
+      <rect width="132" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="66" y="34" text-anchor="middle" fill="#98a3ba">JSON</text>
+    </g>
+    <g transform="translate(240,520)">
+      <rect width="112" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="56" y="34" text-anchor="middle" fill="#98a3ba">JWT</text>
+    </g>
+    <g transform="translate(364,520)">
+      <rect width="140" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="70" y="34" text-anchor="middle" fill="#98a3ba">Regex</text>
+    </g>
+    <g transform="translate(516,520)">
+      <rect width="130" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="65" y="34" text-anchor="middle" fill="#98a3ba">Hash</text>
+    </g>
+    <g transform="translate(658,520)">
+      <rect width="112" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="56" y="34" text-anchor="middle" fill="#98a3ba">QR</text>
+    </g>
+    <g transform="translate(782,520)">
+      <rect width="128" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="64" y="34" text-anchor="middle" fill="#98a3ba">Cron</text>
+    </g>
+    <g transform="translate(922,520)">
+      <rect width="150" height="52" rx="26" fill="#161e30" stroke="#212b40" stroke-width="1.5"/>
+      <text x="75" y="34" text-anchor="middle" fill="#98a3ba">+ 17 more</text>
+    </g>
+  </g>
+
+  <!-- offline badge -->
+  <g transform="translate(1010,120)">
+    <rect width="188" height="60" rx="30" fill="#10281f" stroke="#34d399" stroke-width="2"/>
+    <circle cx="34" cy="30" r="8" fill="#34d399"/>
+    <text x="58" y="39" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+          font-size="25" font-weight="700" fill="#34d399">offline</text>
+  </g>
+</svg>

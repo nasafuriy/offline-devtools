@@ -34,10 +34,17 @@ jobs:
       - name: Build
         run: node build.mjs
 
+      - name: Render the icons and social preview
+        run: node build-assets.mjs
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+
       - name: Assemble the site
         run: |
           mkdir -p _site
           cp index.html _site/
+          cp manifest.webmanifest _site/
+          cp sw.js _site/
           cp -r src _site/
           cp -r docs _site/
           mkdir -p _site/dist

@@ -1,0 +1,44 @@
+name: New tool idea
+description: Suggest a tool that belongs in the box
+labels: ["enhancement", "new tool"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The bar for a new tool is that it must work with **no network and no
+        dependencies**. Anything that needs an API, a database or a package
+        cannot go in, however useful it would otherwise be.
+
+  - type: input
+    id: name
+    attributes:
+      label: What would it be called
+      placeholder: Diff two JSON documents
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What do you currently do instead
+      description: >
+        Which site or command do you reach for today? Knowing that tells us how
+        often this comes up and what the tool has to beat.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: It can work entirely in the browser, with no server call
+          required: true
+        - label: It needs no third-party library
+          required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Edge cases, a spec worth following, a test vector to check against.

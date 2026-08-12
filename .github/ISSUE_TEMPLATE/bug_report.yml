@@ -1,0 +1,64 @@
+name: Bug report
+description: A tool gives the wrong answer, or the page misbehaves
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Nothing you type into Shashka is sent anywhere, which also means there
+        are no server logs for us to look at. A reproducible input is the only
+        evidence available — please include one.
+
+        **Do not paste real secrets.** If a production token triggers the bug,
+        please shrink it to a fake one that still reproduces the problem.
+
+  - type: input
+    id: tool
+    attributes:
+      label: Which tool
+      description: The id from the address bar, e.g. `jwt` from `#/jwt`.
+      placeholder: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Input that triggers it
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened instead
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Firefox 141 on Windows 11
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: How were you running it
+      options:
+        - The hosted site
+        - dist/shashka.html opened from my file system
+        - Cloned repository via index.html
+        - Installed as an app
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors, if any
+      description: Press F12, open Console, and paste anything red.
+      render: text

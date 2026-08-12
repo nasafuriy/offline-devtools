@@ -46,7 +46,13 @@ air-gapped laptop in ten years.
 The hosted copy is the same file and behaves identically: once the page has loaded, it
 never talks to the network again.
 
-**Download one file** — grab [`dist/shashka.html`](dist/shashka.html), open it. Done.
+**Install it as an app** — open the hosted page and use your browser's install
+button (Chrome and Edge show one in the address bar; on iOS use Share → Add to Home
+Screen). It then opens in its own window, appears in your launcher, and works with
+the network switched off entirely.
+
+**Download one file** — grab [`dist/shashka.html`](dist/shashka.html) or the latest
+[release](https://github.com/nasafuriy/offline-devtools/releases), and open it. Done.
 
 **Host it** — drop that same file anywhere static: GitHub Pages, S3, an intranet share.
 
@@ -182,6 +188,11 @@ levels, multiple versions and every mask pattern.
   no modulo bias.
 - MD5 and SHA-1 are included because legacy checksums need them, and both are labelled as
   unfit for security.
+- The hosted copy registers a service worker so it can be installed and run offline. It is
+  same-origin only, caches nothing but the app's own files, and is stripped from
+  `dist/shashka.html` entirely — the downloaded file has no worker and no manifest. CI
+  fails the build if the bundle ever gains a `fetch`, `XMLHttpRequest`, `WebSocket`,
+  `sendBeacon` or `EventSource` reference, or any remote `src`.
 
 ## Contributing
 
