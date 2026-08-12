@@ -10,6 +10,8 @@ No install, no build step, no accounts, no network. Ever.
 [![Works offline](https://img.shields.io/badge/works-offline-success.svg)](#why-this-exists)
 [![Single file](https://img.shields.io/badge/single%20file-~290%20KB-informational.svg)](dist/shashka.html)
 
+### [▶ Try it live](https://nasafuriy.github.io/offline-devtools/) &nbsp;·&nbsp; [⬇ Download the single file](https://nasafuriy.github.io/offline-devtools/shashka.html)
+
 <img src="docs/screenshot-home.png" alt="The Shashka home screen listing every tool by category" width="820">
 
 </div>
@@ -39,6 +41,10 @@ air-gapped laptop in ten years.
 | **Light and dark** | Follows your system, and remembers if you override it. |
 
 ## Get it
+
+**Use it right now** — [nasafuriy.github.io/offline-devtools](https://nasafuriy.github.io/offline-devtools/).
+The hosted copy is the same file and behaves identically: once the page has loaded, it
+never talks to the network again.
 
 **Download one file** — grab [`dist/shashka.html`](dist/shashka.html), open it. Done.
 
