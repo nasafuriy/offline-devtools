@@ -1,0 +1,14 @@
+# Normalise line endings so the repository always stores LF, whatever the
+# contributor's platform does in their working copy.
+* text=auto eol=lf
+
+# Binary assets must never be touched.
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+
+# Keep the built bundle out of diffs and language statistics — it is generated
+# by build.mjs and reviewing it line by line is noise.
+dist/shashka.html -diff linguist-generated=true
+docs/*.png linguist-documentation=true
